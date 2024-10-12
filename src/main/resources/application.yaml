@@ -4,7 +4,7 @@ spring:
       base-url: ${OLLAMA_BASE_URL:http://localhost:11434/}
       chat:
         options:
-          model: ${OLLAMA_CHAT_MODEL:llama2}
+          model: ${OLLAMA_CHAT_MODEL:llama3.2:3b}
           temperature: ${OLLAMA_CHAT_TEMPERATURE:0.7}
   application:
     name: core
