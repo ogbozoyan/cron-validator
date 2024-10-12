@@ -4,6 +4,8 @@ services:
     hostname: ollama
     container_name: ollama
     image: ollama/ollama
+    environment:
+      - OLLAMA_DEBUG=1
     ports:
       - "11434:11434"
     entrypoint: [ "sh", "/usr/local/bin/check-and-pull.sh" ]
