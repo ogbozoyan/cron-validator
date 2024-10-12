@@ -21,6 +21,6 @@ logging:
   level:
     ru:
       ogbozoyan:
-        cronvalidatorcore:
+        cron:
           configuration:
             ControllerAdvice: OFF

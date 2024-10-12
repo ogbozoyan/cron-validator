@@ -1,12 +1,12 @@
-package ru.ogbozoyan.cronvalidatorcore.service
+package ru.ogbozoyan.cron.service
 
 import lombok.extern.slf4j.Slf4j
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.scheduling.support.CronExpression
 import org.springframework.stereotype.Service
-import ru.ogbozoyan.cronvalidatorcore.web.dto.CronRequestDTO
-import ru.ogbozoyan.cronvalidatorcore.web.dto.CronResponseDTO
+import ru.ogbozoyan.cron.web.dto.CronRequestDTO
+import ru.ogbozoyan.cron.web.dto.CronResponseDTO
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 

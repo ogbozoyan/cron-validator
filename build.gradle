@@ -26,20 +26,24 @@ configurations {
 
 repositories {
     mavenCentral()
+
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'https://repo.spring.io/snapshot' }
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
     implementation 'org.springframework.ai:spring-ai-ollama-spring-boot-starter'
 }
+
 
 kotlin {
     compilerOptions {
