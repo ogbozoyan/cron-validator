@@ -17,8 +17,7 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class AiModelConfiguration(
     private val chatClientBuilder: ChatClient.Builder,
-    @Value("\${app.prompt.system-message}") val systemMessage: String,
-    private val ollamaApi: OllamaApi
+    @Value("\${app.prompt.system-message}") val systemMessage: String
 ) {
 
     @Bean
