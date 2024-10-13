@@ -5,11 +5,9 @@ import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.ai.chat.client.ChatClient
 import org.springframework.ai.chat.client.ChatClient.PromptUserSpec
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.CrossOrigin
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import ru.ogbozoyan.cron.service.CronValidatorService
 import ru.ogbozoyan.cron.web.dto.CronRequestDTO
 import ru.ogbozoyan.cron.web.dto.CronResponseDTO
@@ -34,6 +32,7 @@ class CronController @Autowired constructor(
         summary = "Validate CRON expression",
         description = "Validates the provided CRON expression and returns the result"
     )
+    @ResponseStatus(HttpStatus.OK)
     fun exchange(@RequestBody query: String?): String {
         return chatClient
             .prompt()
