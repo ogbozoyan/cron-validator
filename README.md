@@ -1,6 +1,8 @@
 # Spring Cron Expression Validator
 
-This tool allows users to validate and preview the next few execution times of a given cron expression. It provides immediate feedback on whether a cron expression is valid and shows the next five occurrences based on the current system time.
+This tool allows users to validate and preview the next few execution times of a given cron expression. It provides
+immediate feedback on whether a cron expression is valid and shows the next five occurrences based on the current system
+time.
 
 ## Usage
 
@@ -29,25 +31,27 @@ Enter cron expression (or type 'exit' to quit): exit
 
 ## Supported Cron Syntax
 
-The validator supports the standard cron syntax with six single space-separated time and date fields. Here's a brief overview of the syntax:
+The validator supports the standard cron syntax with six single space-separated time and date fields. Here's a brief
+overview of the syntax:
 
 - Seconds:  0-59
 - Minutes:  0-59
 - Hours:  0-23
 - Day of Month:  1-31
 - Month:  1-12 (or JAN-DEC)
-- Day of Week:  0-7 (0 or  7 is Sunday, or MON-SUN)
+- Day of Week:  0-7 (0 or 7 is Sunday, or MON-SUN)
 
-Additionally, the validator supports the use of asterisks (`*`), ranges (e.g., `1-5`), and steps (e.g., `*/5`). English names for months and days of the week are also accepted.
+Additionally, the validator supports the use of asterisks (`*`), ranges (e.g., `1-5`), and steps (e.g., `*/5`). English
+names for months and days of the week are also accepted.
 
 ## Notes
 
-- The application will continue to prompt for input until the user types `exit`.
+- To run Ollama with debugging use `ollama serve`
 - Invalid cron expressions will result in an error message indicating that the expression is invalid.
 - The application will display the next five execution times for the valid cron expressions entered.
 
-
 ## TODO
 
-- add Native query support like 'give me every 1th november' and llm will generate cron and by validator check result and give output
+- add Native query support like 'give me every 1th november' and llm will generate cron and by validator check result
+  and give output
  
