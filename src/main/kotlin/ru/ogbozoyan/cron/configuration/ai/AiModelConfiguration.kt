@@ -7,7 +7,6 @@ import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor
 import org.springframework.ai.chat.memory.ChatMemory
 import org.springframework.ai.chat.memory.InMemoryChatMemory
 import org.springframework.ai.embedding.EmbeddingModel
-import org.springframework.ai.ollama.api.OllamaApi
 import org.springframework.ai.vectorstore.SimpleVectorStore
 import org.springframework.ai.vectorstore.VectorStore
 import org.springframework.beans.factory.annotation.Value
