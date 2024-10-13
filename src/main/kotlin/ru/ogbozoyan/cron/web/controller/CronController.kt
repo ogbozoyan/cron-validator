@@ -20,9 +20,8 @@ import ru.ogbozoyan.cron.web.dto.CronResponseDTO
 @Tag(name = "Cron API", description = "API for validating CRON expressions")
 class CronController @Autowired constructor(
     val cronValidatorService: CronValidatorService,
-    chatClientBuilder: ChatClient.Builder
+    val chatClient: ChatClient,
 ) : CronAPI {
-    private final val chatClient: ChatClient = chatClientBuilder.build()
 
     override fun validate(@RequestBody request: CronRequestDTO): ResponseEntity<CronResponseDTO> {
         return ResponseEntity.ok(cronValidatorService.validate(request))
