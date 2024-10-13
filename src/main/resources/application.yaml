@@ -4,7 +4,7 @@ spring:
       base-url: ${OLLAMA_BASE_URL:http://localhost:11434/}
       chat:
         options:
-          model: ${OLLAMA_CHAT_MODEL:deepseek-coder-v2}
+          model: ${OLLAMA_CHAT_MODEL:deepseek-coder-v2:16b}
           temperature: ${OLLAMA_CHAT_TEMPERATURE:0.5}
   application:
     name: core
