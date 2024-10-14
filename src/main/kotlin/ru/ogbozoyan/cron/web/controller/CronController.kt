@@ -21,8 +21,8 @@ class CronController @Autowired constructor(
     val chatClient: ChatClient,
 ) : CronAPI {
 
-    override fun validate(@RequestBody request: CronRequestDTO): ResponseEntity<CronResponseDTO> {
-        return ResponseEntity.ok(cronValidatorService.validate(request))
+    override fun validateAndGetNextExecutions(@RequestBody request: CronRequestDTO): ResponseEntity<CronResponseDTO> {
+        return ResponseEntity.ok(cronValidatorService.validateAndGetNextExecutions(request))
     }
 
     @PostMapping(
