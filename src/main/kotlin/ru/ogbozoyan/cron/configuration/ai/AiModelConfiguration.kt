@@ -12,11 +12,12 @@ import org.springframework.ai.vectorstore.VectorStore
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.core.io.Resource
 
 @Configuration
 class AiModelConfiguration(
     private val chatClientBuilder: ChatClient.Builder,
-    @Value("\${app.prompt.system-message}") val systemMessage: String
+    @Value("classpath:/prompts/system-message.st") private val systemMessage: Resource
 ) {
 
     @Bean
@@ -26,7 +27,6 @@ class AiModelConfiguration(
 
     @Bean
     fun chatClient(): ChatClient {
-        //TODO ("ADD TOOL(FUNCTION) CONTEXT TO MODEL")
         return chatClientBuilder
             .defaultSystem(systemMessage)
             .defaultAdvisors(
@@ -37,7 +37,7 @@ class AiModelConfiguration(
     }
 
     @Bean
-    fun vectorStore(embeddingModel: EmbeddingModel): VectorStore {
+    fun simpleVectorStore(embeddingModel: EmbeddingModel): VectorStore {
         return SimpleVectorStore(embeddingModel)
     }
 }

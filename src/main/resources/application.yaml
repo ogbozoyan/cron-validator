@@ -1,12 +1,26 @@
 spring:
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
   ai:
     ollama:
       base-url: ${OLLAMA_BASE_URL:http://localhost:11434/}
+      embedding:
+        options:
+          model: nomic-embed-text
       chat:
         options:
-          model: ${OLLAMA_CHAT_MODEL:deepseek-coder-v2:16b}
+          model: ${OLLAMA_CHAT_MODEL:mistral-nemo}
           temperature: ${OLLAMA_CHAT_TEMPERATURE:0.5}
-          functions: TODO()
+          functions:
+            - "testFunction"
+      # Not sure about this configuration https://docs.rapidapp.io/blog/integrating-spring-ai-with-vector-databases
+      vectorstore:
+        pgvector:
+          index-type: hnsw
+          distance-type: cosine_distance
+          dimensions: 384
   application:
     name: core
 springdoc:
@@ -30,6 +44,3 @@ logging:
         cron:
           configuration:
             ControllerAdvice: OFF
-app:
-  prompt:
-    system-message: ${APP_PROMPT_SYSTEM-MESSAGE:"TODO ADD PROMPT"}
