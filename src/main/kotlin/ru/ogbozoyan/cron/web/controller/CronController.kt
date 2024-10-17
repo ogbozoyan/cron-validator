@@ -18,11 +18,11 @@ import ru.ogbozoyan.cron.web.dto.CronResponseDTO
 @Tag(name = "Cron API", description = "API for validating CRON expressions")
 class CronController @Autowired constructor(
     val cronValidatorService: CronValidatorService,
-    val chatClient: ChatClient,
+    val ollamaClient: ChatClient,
 ) : CronAPI {
 
-    override fun validate(@RequestBody request: CronRequestDTO): ResponseEntity<CronResponseDTO> {
-        return ResponseEntity.ok(cronValidatorService.validate(request))
+    override fun validateAndGetNextExecutions(@RequestBody request: CronRequestDTO): ResponseEntity<CronResponseDTO> {
+        return ResponseEntity.ok(cronValidatorService.validateAndGetNextExecutions(request))
     }
 
     @PostMapping(
@@ -34,7 +34,7 @@ class CronController @Autowired constructor(
     )
     @ResponseStatus(HttpStatus.OK)
     fun exchange(@RequestBody query: String?): String {
-        return chatClient
+        return ollamaClient
             .prompt()
             .user { u: PromptUserSpec -> u.text(query) }
             .call()

@@ -1,14 +1,29 @@
 spring:
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
   ai:
     ollama:
       base-url: ${OLLAMA_BASE_URL:http://localhost:11434/}
+      embedding:
+        options:
+          model: nomic-embed-text
       chat:
         options:
-          model: ${OLLAMA_CHAT_MODEL:deepseek-coder-v2:16b}
+          model: ${OLLAMA_CHAT_MODEL:mistral-nemo}
           temperature: ${OLLAMA_CHAT_TEMPERATURE:0.5}
+          functions:
+            - "testFunction"
+      # Not sure about this configuration https://docs.rapidapp.io/blog/integrating-spring-ai-with-vector-databases
+      vectorstore:
+        pgvector:
+          initialize-schema: true
+          index-type: HNSW
+          distance-type: COSINE_DISTANCE
+          dimensions: 1536
   application:
     name: core
-
 springdoc:
   swagger-ui:
     enabled: true                  # Enable Swagger UI
@@ -19,6 +34,12 @@ logging:
   pattern:
     console: "%clr(%d{dd-MM-yyyy HH:mm:ss.SSS}){blue} %clr(${LOG_LEVEL_PATTERN: - %5p}) %clr(${PID:- }){magenta} %clr([%thread]){yellow}  %cyan(%logger{39}:%L)  %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}"
   level:
+    org:
+      springframework:
+        ai:
+          chat:
+            client:
+              advisor: debug
     ru:
       ogbozoyan:
         cron:
