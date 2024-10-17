@@ -26,7 +26,7 @@ class AiModelConfiguration(
     }
 
     @Bean
-    fun chatClient(): ChatClient {
+    fun ollamaClient(): ChatClient {
         return chatClientBuilder
             .defaultSystem(systemMessage)
             .defaultAdvisors(
