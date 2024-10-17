@@ -18,9 +18,10 @@ spring:
       # Not sure about this configuration https://docs.rapidapp.io/blog/integrating-spring-ai-with-vector-databases
       vectorstore:
         pgvector:
-          index-type: hnsw
-          distance-type: cosine_distance
-          dimensions: 384
+          initialize-schema: true
+          index-type: HNSW
+          distance-type: COSINE_DISTANCE
+          dimensions: 1536
   application:
     name: core
 springdoc:
