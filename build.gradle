@@ -37,11 +37,11 @@ dependencies {
     implementation 'org.springframework.ai:spring-ai-ollama-spring-boot-starter'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
     implementation 'org.springframework.ai:spring-ai-pgvector-store-spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
-    compileOnly 'org.projectlombok:lombok:1.18.28'
-    annotationProcessor 'org.projectlombok:lombok:1.18.28'
+    testImplementation 'org.junit.platform:junit-platform-launcher:1.10.3'
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
