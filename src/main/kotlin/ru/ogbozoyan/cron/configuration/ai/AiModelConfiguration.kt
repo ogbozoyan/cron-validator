@@ -7,6 +7,7 @@ import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor
 import org.springframework.ai.chat.memory.ChatMemory
 import org.springframework.ai.chat.memory.InMemoryChatMemory
 import org.springframework.ai.embedding.EmbeddingModel
+import org.springframework.ai.evaluation.RelevancyEvaluator
 import org.springframework.ai.vectorstore.SimpleVectorStore
 import org.springframework.ai.vectorstore.VectorStore
 import org.springframework.beans.factory.annotation.Value
@@ -20,7 +21,6 @@ class AiModelConfiguration(
     @Value("classpath:/prompts/system-message.st") private val systemMessage: Resource
 ) {
 
-    @Bean
     fun chatMemory(): ChatMemory {
         return InMemoryChatMemory()
     }
@@ -34,6 +34,14 @@ class AiModelConfiguration(
                 SimpleLoggerAdvisor()
             )
             .build()
+    }
+
+    /*
+    * Проверяет на релевантность ответ от AI
+    */
+    @Bean
+    fun relevancyEvaluator(): RelevancyEvaluator {
+        return RelevancyEvaluator(chatClientBuilder)
     }
 
     @Bean
