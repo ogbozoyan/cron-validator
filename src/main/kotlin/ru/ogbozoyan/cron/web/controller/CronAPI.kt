@@ -21,5 +21,5 @@ interface CronAPI {
         description = "Validates the provided CRON expression and returns the result"
     )
     @ResponseStatus(HttpStatus.OK)
-    fun validate(@RequestBody request: CronRequestDTO): ResponseEntity<CronResponseDTO>
+    fun validateAndGetNextExecutions(@RequestBody request: CronRequestDTO): ResponseEntity<CronResponseDTO>
 }

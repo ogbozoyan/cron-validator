@@ -1,7 +1,6 @@
 package ru.ogbozoyan.cron.configuration
 
 import jakarta.validation.ConstraintViolationException
-import lombok.extern.slf4j.Slf4j
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
@@ -23,7 +22,6 @@ private const val RESOURCE_NOT_FOUND = "Resource not found"
 private const val UNEXPECTED_ERROR = "An unexpected error occurred"
 
 @RestControllerAdvice
-@Slf4j
 class ControllerAdvice(
     private var headers: HttpHeaders = HttpHeaders()
 ) {

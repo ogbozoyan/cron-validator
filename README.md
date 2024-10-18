@@ -55,3 +55,18 @@ names for months and days of the week are also accepted.
 - add Native query support like 'give me every 1th november' and llm will generate cron and by validator check result
   and give output
  
+## HOWTO DEBUG OLLAMA
+
+Steps:
+
+1. git clone https://github.com/ollama/ollama.git | cd ollama
+2. brew install go cmake gcc
+3. 
+* At build time
+export CGO_CFLAGS="-g"
+ * At runtime
+export OLLAMA_DEBUG=1 
+4. go generate ./...
+5. go build .
+6. OLLAMA_DEBUG=1 ./ollama serve or OLLAMA_DEBUG=1 ./ollama serve > ollama.log 2>&1
+
