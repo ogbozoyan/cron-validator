@@ -2,9 +2,9 @@ spring:
   application:
     name: cron-ai
   datasource:
-    url: ${DATASOURCE_URL}
-    username: ${DATASOURCE_USERNAME}
-    password: ${DATASOURCE_PASSWORD}
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/cron_validator}
+    username: ${DATASOURCE_USERNAME:admin}
+    password: ${DATASOURCE_PASSWORD:admin}
   ai:
     ollama:
       base-url: ${OLLAMA_BASE_URL:http://localhost:11434/}
