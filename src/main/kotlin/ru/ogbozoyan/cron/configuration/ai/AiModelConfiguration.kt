@@ -7,7 +7,7 @@ import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor
 import org.springframework.ai.chat.memory.ChatMemory
 import org.springframework.ai.chat.memory.InMemoryChatMemory
 import org.springframework.ai.embedding.EmbeddingModel
-import org.springframework.ai.evaluation.RelevancyEvaluator
+import org.springframework.ai.evaluation.FactCheckingEvaluator
 import org.springframework.ai.vectorstore.SimpleVectorStore
 import org.springframework.ai.vectorstore.VectorStore
 import org.springframework.beans.factory.annotation.Value
@@ -40,12 +40,13 @@ class AiModelConfiguration(
     * Проверяет на релевантность ответ от AI
     */
     @Bean
-    fun relevancyEvaluator(): RelevancyEvaluator {
-        return RelevancyEvaluator(chatClientBuilder)
+    fun relevancyEvaluator(): FactCheckingEvaluator {
+        return FactCheckingEvaluator(chatClientBuilder)
     }
 
     @Bean
     fun simpleVectorStore(embeddingModel: EmbeddingModel): VectorStore {
         return SimpleVectorStore(embeddingModel)
     }
+
 }
