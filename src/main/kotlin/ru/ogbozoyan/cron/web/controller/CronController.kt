@@ -36,7 +36,7 @@ class CronController(
     @ResponseStatus(HttpStatus.OK)
     fun exchange(@RequestBody query: String?): String {
         return ollamaClient
-            .prompt()
+            .prompt(query)
             .user { u: PromptUserSpec -> u.text(query) }
             .call()
             .content()

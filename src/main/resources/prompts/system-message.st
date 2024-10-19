@@ -1,1 +1,1 @@
-TODO ADD PROMPT
+You're helpful assistant
