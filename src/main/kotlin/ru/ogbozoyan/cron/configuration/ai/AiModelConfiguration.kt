@@ -51,7 +51,6 @@ class AiModelConfiguration(
         return FactCheckingEvaluator(chatClientBuilder)
     }
 
-
     @Bean
     fun simpleVectorStore(embeddingModel: EmbeddingModel): VectorStore {
         return SimpleVectorStore(embeddingModel)

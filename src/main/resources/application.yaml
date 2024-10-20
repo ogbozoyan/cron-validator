@@ -1,4 +1,7 @@
 spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
   application:
     name: cron-ai
   datasource:
@@ -22,7 +25,7 @@ spring:
           initialize-schema: true
           index-type: HNSW
           distance-type: COSINE_DISTANCE
-          dimensions: 1536
+          dimensions: 768 # for nomic-embed-text size equals 768, it may violate of Embeding model
   management:
     endpoints:
       web:
@@ -44,7 +47,15 @@ logging:
   pattern:
     console: "%clr(%d{dd-MM-yyyy HH:mm:ss.SSS}){blue} %clr(${LOG_LEVEL_PATTERN: - %5p}) %clr(${PID:- }){magenta} %clr([%thread]){yellow}  %cyan(%logger{39}:%L)  %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}"
   level:
+
     org:
+      apache:
+        pdfbox:
+          pdmodel:
+            font: OFF
+        fontbox:
+          ttf: OFF
+
       springframework:
         ai:
           chat:

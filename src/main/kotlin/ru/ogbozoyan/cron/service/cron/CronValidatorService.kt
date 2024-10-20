@@ -1,4 +1,4 @@
-package ru.ogbozoyan.cron.service
+package ru.ogbozoyan.cron.service.cron
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -10,9 +10,9 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 @Service
-class CronValidatorService(val log: Logger = LoggerFactory.getLogger(CronValidatorService::class.java)!!) :
+class CronValidatorService :
     CronValidatorServiceImpl {
-
+    private val log: Logger = LoggerFactory.getLogger(CronValidatorService::class.java)
     override fun validateAndGetNextExecutions(cron: CronRequestDTO): CronResponseDTO {
         val cronString = cron.cron
 
