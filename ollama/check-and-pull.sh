@@ -1,11 +1,11 @@
 #!/bin/sh
 
-# Check if llama3.2 is in the list of models
-if ollama list | grep -q 'llama3.2'; then
-  echo "llama3.2 is already installed."
+# Check if mistral is in the list of models
+if ollama list | grep -q 'mistral'; then
+  echo "mistral is already installed."
 else
-  echo "llama3.2 not found. Pulling the model..."
-  ollama pull llama3.2
+  echo "mistral not found. Pulling the model..."
+  ollama pull mistral
 fi
 
 if ollama list | grep -q 'nomic-embed-text'; then
