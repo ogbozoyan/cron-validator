@@ -1,4 +1,4 @@
-package ru.ogbozoyan.cron.service
+package ru.ogbozoyan.cron.service.cron
 
 import ru.ogbozoyan.cron.web.dto.CronRequestDTO
 import ru.ogbozoyan.cron.web.dto.CronResponseDTO
