@@ -114,6 +114,7 @@ class PGVectorStoreService(
             textReader.charset = Charset.defaultCharset()
             val documents = textReader.get()
 
+            enrichWithFileName(documents, fileName)
 
             log.info("Creating and storing Embeddings from Documents")
             vectorStore.accept(textSplitter.split(documents))
