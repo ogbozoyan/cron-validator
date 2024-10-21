@@ -2,9 +2,9 @@ package ru.ogbozoyan.cron.configuration.ai
 
 import org.springframework.ai.chat.client.ChatClient
 import org.springframework.ai.chat.client.advisor.AbstractChatMemoryAdvisor.DEFAULT_CHAT_MEMORY_CONVERSATION_ID
+import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor
 import org.springframework.ai.chat.client.advisor.QuestionAnswerAdvisor
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor
-import org.springframework.ai.chat.client.advisor.VectorStoreChatMemoryAdvisor
 import org.springframework.ai.chat.memory.ChatMemory
 import org.springframework.ai.chat.memory.InMemoryChatMemory
 import org.springframework.ai.embedding.EmbeddingModel
@@ -35,7 +35,8 @@ class AiModelConfiguration(
         return chatClientBuilder
             .defaultSystem(systemMessage)
             .defaultAdvisors(
-                VectorStoreChatMemoryAdvisor(vectorStore, DEFAULT_CHAT_MEMORY_CONVERSATION_ID, 5),
+                MessageChatMemoryAdvisor(inMemoryChatMemory(), DEFAULT_CHAT_MEMORY_CONVERSATION_ID, 5),
+//                VectorStoreChatMemoryAdvisor(vectorStore, DEFAULT_CHAT_MEMORY_CONVERSATION_ID, 5),
                 QuestionAnswerAdvisor(vectorStore, SearchRequest.defaults()), // RAG advisor
 //                PromptSafeCheckAdvisor(promptSafetyClient(), safetyPrompt),
                 SimpleLoggerAdvisor()
