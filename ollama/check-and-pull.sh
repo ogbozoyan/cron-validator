@@ -8,11 +8,11 @@ else
   ollama pull mistral
 fi
 
-if ollama list | grep -q 'nomic-embed-text'; then
-  echo "nomic-embed-text is already installed."
+if ollama list | grep -q 'mxbai-embed-large'; then
+  echo "mxbai-embed-large: is already installed."
 else
-  echo "nomic-embed-text not found. Pulling the model..."
-  ollama pull nomic-embed-text
+  echo "mxbai-embed-large: not found. Pulling the model..."
+  ollama pull mxbai-embed-large:
 fi
 
 # You can add other commands here or just start the main container process

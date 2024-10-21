@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
 import org.springframework.web.context.request.WebRequest
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+import org.springframework.web.multipart.MaxUploadSizeExceededException
 import org.springframework.web.servlet.NoHandlerFoundException
 import org.springframework.web.servlet.resource.NoResourceFoundException
 import java.io.IOException
@@ -39,6 +40,22 @@ class ControllerAdvice(
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     fun handleMethodArgumentTypeMismatch(
         ex: MethodArgumentTypeMismatchException,
+        req: WebRequest
+    ): ResponseEntity<CustomErrorMessage> {
+        try {
+            val errorMessage =
+                getErrorMessage(HttpStatus.BAD_REQUEST, ex.message ?: "No message provided", req, ex.javaClass.name)
+            log.warn("Bad request: $errorMessage")
+            return ResponseEntity(errorMessage, headers, HttpStatus.BAD_REQUEST)
+        } catch (e: Exception) {
+            return responseIfBrokenControllerAdvice(e, req, ex.javaClass.name)
+        }
+    }
+
+    @ExceptionHandler(MaxUploadSizeExceededException::class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    fun handleMaxUploadSizeExceededException(
+        ex: MaxUploadSizeExceededException,
         req: WebRequest
     ): ResponseEntity<CustomErrorMessage> {
         try {

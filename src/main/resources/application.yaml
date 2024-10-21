@@ -1,7 +1,8 @@
 spring:
   servlet:
     multipart:
-      max-file-size: 100MB
+      max-file-size: ${MAX_FILE_SIZE:100MB}
+      max-request-size: ${MAX_FILE_SIZE:100MB}
   application:
     name: cron-ai
   datasource:
@@ -13,7 +14,7 @@ spring:
       base-url: ${OLLAMA_BASE_URL:http://localhost:11434/}
       embedding:
         options:
-          model: nomic-embed-text
+          model: ${AI_OLLAMA_EMBEDDING_OPTIONS_MODEL:mxbai-embed-large:latest}
       chat:
         options:
           model: ${OLLAMA_CHAT_MODEL:mistral:latest}
@@ -25,7 +26,7 @@ spring:
           initialize-schema: true
           index-type: HNSW
           distance-type: COSINE_DISTANCE
-          dimensions: 768 # for nomic-embed-text size equals 768, it may violate of Embeding model
+          dimensions: 1024 # for nomic-embed-text size equals 768, it may violate of Embeding model
   management:
     endpoints:
       web:
@@ -66,3 +67,6 @@ logging:
         cron:
           configuration:
             ControllerAdvice: OFF
+server:
+  tomcat:
+    max-swallow-size: ${MAX_FILE_SIZE:100MB}
